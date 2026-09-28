@@ -1,0 +1,5 @@
+# LIP Industrie Précision — indexation autorisée
+User-agent: *
+Allow: /
+
+Sitemap: https://www.lip-industrie.com/sitemap.xml

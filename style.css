@@ -1,0 +1,255 @@
+/* ===================================================================
+   LIP Industrie Précision — Landing page (style sombre "Netflix")
+   =================================================================== */
+
+:root{
+  --vert:        #2E8B3D;   /* vert de marque (pas tout à fait foncé) */
+  --vert-fonce:  #1F5E2A;
+  --vert-clair:  #4CAF50;
+  --bg:          #0B0F0C;
+  --bg-2:        #10160F;
+  --surface:     #171E17;
+  --surface-2:   #1E271D;
+  --text:        #F1F5F1;
+  --text-dim:    #A9B4A8;
+  --border:      #2A342A;
+  --shadow:      0 12px 40px rgba(0,0,0,.55);
+  --radius:      16px;
+  --maxw:        1120px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family:'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+
+/* ===== Barre du haut / onglets ===== */
+.topbar{
+  position:sticky; top:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:12px 18px;
+  background:rgba(11,15,12,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.brand-logo{ height:34px; width:auto; }
+.tabs{ display:flex; gap:6px; background:var(--surface); padding:5px; border-radius:999px; border:1px solid var(--border); }
+.tab{
+  border:0; cursor:pointer;
+  font:inherit; font-weight:600; font-size:.86rem;
+  color:var(--text-dim);
+  padding:8px 18px; border-radius:999px;
+  background:transparent; transition:.25s;
+}
+.tab:hover{ color:var(--text); }
+.tab.active{ background:var(--vert); color:#fff; box-shadow:0 4px 14px rgba(46,139,61,.4); }
+
+/* ===== Onglets (panels) ===== */
+.tab-panel{ display:none; animation:fade .4s ease; }
+.tab-panel.active{ display:block; }
+@keyframes fade{ from{opacity:0} to{opacity:1} }
+
+/* ===== Hero ===== */
+.hero{
+  position:relative; min-height:92vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:80px 20px 100px; overflow:hidden;
+}
+.hero-bg{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  transform:scale(1.08); filter:saturate(1.05);
+  animation:kenburns 20s ease-in-out infinite alternate;
+}
+@keyframes kenburns{ from{transform:scale(1.08)} to{transform:scale(1.2)} }
+.hero-overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,15,12,.55) 0%, rgba(11,15,12,.75) 55%, var(--bg) 100%),
+    radial-gradient(60% 60% at 50% 40%, rgba(46,139,61,.35), transparent 70%);
+}
+.hero-content{ position:relative; z-index:2; max-width:760px; }
+.hero-logo{ height:64px; width:auto; margin:0 auto 22px; }
+.hero-tagline{
+  color:var(--vert-clair); font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; font-size:.8rem; margin-bottom:14px;
+}
+.hero-title{
+  font-size:clamp(2rem, 7vw, 3.5rem); font-weight:900;
+  line-height:1.08; letter-spacing:-.02em;
+}
+.hero-title .accent{ color:var(--vert-clair); }
+.hero-sub{ margin:18px auto 24px; max-width:540px; color:var(--text-dim); font-size:1.02rem; }
+.badge-salon{
+  display:inline-block; font-size:.82rem; font-weight:600;
+  padding:8px 16px; border-radius:999px;
+  background:rgba(46,139,61,.16); border:1px solid rgba(76,175,80,.4);
+  color:var(--vert-clair);
+}
+.hero-cta{ margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.scroll-hint{
+  position:absolute; bottom:22px; left:50%; transform:translateX(-50%);
+  font-size:2rem; color:var(--text-dim); z-index:2;
+  animation:bob 1.8s ease-in-out infinite;
+}
+@keyframes bob{ 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,8px)} }
+
+/* ===== Boutons ===== */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font:inherit; font-weight:600; font-size:.95rem; cursor:pointer;
+  padding:13px 26px; border-radius:12px; border:1px solid transparent;
+  transition:transform .18s, background .2s, box-shadow .2s;
+}
+.btn:active{ transform:scale(.97); }
+.btn-primary{ background:var(--vert); color:#fff; box-shadow:0 6px 20px rgba(46,139,61,.45); }
+.btn-primary:hover{ background:var(--vert-clair); box-shadow:0 8px 26px rgba(46,139,61,.6); }
+.btn-ghost{ background:rgba(255,255,255,.06); border-color:var(--border); color:var(--text); }
+.btn-ghost:hover{ background:rgba(255,255,255,.12); }
+.btn-block{ display:flex; width:100%; margin:20px 0 4px; padding:16px; font-size:1.05rem; }
+
+/* ===== Sections génériques ===== */
+.section{ max-width:var(--maxw); margin:0 auto; padding:64px 20px; }
+.eyebrow{
+  display:inline-block; color:var(--vert-clair); font-weight:700;
+  text-transform:uppercase; letter-spacing:.14em; font-size:.74rem; margin-bottom:12px;
+}
+.section h2{ font-size:clamp(1.5rem, 4.5vw, 2.3rem); font-weight:800; letter-spacing:-.02em; line-height:1.15; }
+.section-head{ margin-bottom:34px; max-width:640px; }
+.lead{ color:var(--text-dim); font-size:1.06rem; margin-top:16px; max-width:680px; }
+.intro h2{ margin-top:6px; }
+
+/* ===== Cartes savoir-faire ===== */
+.cards{ display:grid; grid-template-columns:1fr; gap:22px; }
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); overflow:hidden; transition:transform .3s, box-shadow .3s;
+}
+.card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
+.card-img{ height:200px; background-size:cover; background-position:center; }
+.card-body{ padding:22px; }
+.card-body h3{ font-size:1.2rem; margin-bottom:8px; }
+.card-body p{ color:var(--text-dim); font-size:.96rem; }
+
+/* ===== Stats ===== */
+.stats-section{ background:linear-gradient(180deg, var(--bg), var(--bg-2)); max-width:none; }
+.stats-section .section-head, .stats{ max-width:var(--maxw); margin-left:auto; margin-right:auto; }
+.stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.stat{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:22px 16px; text-align:center;
+}
+.stat-num{ display:block; font-size:2.2rem; font-weight:900; color:var(--vert-clair); line-height:1; }
+.stat-label{ display:block; margin-top:8px; color:var(--text-dim); font-size:.82rem; }
+
+/* ===== Secteurs ===== */
+.sectors{ display:grid; grid-template-columns:1fr; gap:18px; }
+.sector{
+  position:relative; min-height:220px; border-radius:var(--radius); overflow:hidden;
+  background-size:cover; background-position:center;
+  display:flex; align-items:flex-end; transition:transform .3s;
+}
+.sector::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 30%, rgba(11,15,12,.92) 100%);
+}
+.sector:hover{ transform:scale(1.02); }
+.sector-label{ position:relative; z-index:2; padding:22px; }
+.sector-label h3{ font-size:1.35rem; }
+.sector-label p{ color:var(--text-dim); font-size:.92rem; margin-top:4px; }
+
+/* ===== Engagements ===== */
+.commit-section{ background:linear-gradient(180deg, var(--bg-2), var(--bg)); max-width:none; }
+.commit-section .section-head, .commit-grid{ max-width:var(--maxw); margin-left:auto; margin-right:auto; }
+.commit-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.commit{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:22px;
+}
+.commit-ico{ font-size:1.8rem; }
+.commit h3{ margin:10px 0 4px; font-size:1.05rem; }
+.commit p{ color:var(--text-dim); font-size:.9rem; }
+
+/* ===== CTA final ===== */
+.cta-final{ text-align:center; }
+.cta-final h2{ margin-bottom:8px; }
+.cta-final p{ color:var(--text-dim); margin-bottom:24px; }
+
+/* ===================================================================
+   ONGLET CONTACT — carte de visite
+   =================================================================== */
+.contact-panel{ min-height:calc(100vh - 60px); display:flex; align-items:center; justify-content:center; padding:40px 18px; }
+.vcard{
+  width:100%; max-width:440px;
+  background:linear-gradient(160deg, var(--surface-2), var(--surface));
+  border:1px solid var(--border); border-radius:24px;
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.vcard-top{
+  padding:34px 26px 26px; text-align:center;
+  background:linear-gradient(160deg, rgba(46,139,61,.22), transparent);
+  border-bottom:1px solid var(--border);
+}
+.vcard-logo{ height:52px; width:auto; margin:0 auto 12px; }
+.vcard-tagline{ color:var(--vert-clair); font-weight:600; font-size:.9rem; }
+.vcard-body{ padding:24px 26px 6px; }
+.contact-list{ list-style:none; }
+.contact-list li{
+  display:flex; align-items:flex-start; gap:12px;
+  padding:13px 0; border-bottom:1px solid var(--border); font-size:.98rem;
+}
+.contact-list li:last-child{ border-bottom:0; }
+.contact-list a:hover{ color:var(--vert-clair); }
+.ci{ font-size:1.15rem; flex-shrink:0; width:24px; text-align:center; }
+
+.quick-actions{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; }
+.quick-actions .btn{ padding:11px 6px; font-size:.82rem; }
+
+.salon-note{
+  margin:20px 0 4px; text-align:center; font-size:.86rem;
+  color:var(--text-dim); background:rgba(46,139,61,.1);
+  border:1px solid rgba(76,175,80,.28); border-radius:12px; padding:12px;
+}
+.vcard-foot{ padding:18px 26px 26px; text-align:center; border-top:1px solid var(--border); margin-top:8px; }
+.site-link{ color:var(--vert-clair); font-weight:600; font-size:.95rem; }
+.site-link:hover{ text-decoration:underline; }
+
+/* ===== Footer ===== */
+.footer{
+  text-align:center; padding:36px 20px; border-top:1px solid var(--border);
+  color:var(--text-dim); font-size:.84rem;
+}
+.foot-mark{ height:38px; width:auto; margin:0 auto 12px; opacity:.9; }
+.footer a{ color:var(--vert-clair); }
+
+/* ===== Reveal au scroll ===== */
+.reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible{ opacity:1; transform:none; }
+
+/* ===================================================================
+   Responsive (≥ 768px)
+   =================================================================== */
+@media (min-width:768px){
+  .cards{ grid-template-columns:repeat(3,1fr); }
+  .stats{ grid-template-columns:repeat(6,1fr); }
+  .sectors{ grid-template-columns:repeat(3,1fr); }
+  .commit-grid{ grid-template-columns:repeat(4,1fr); }
+  .sector{ min-height:300px; }
+  .brand-logo{ height:40px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important; }
+  .reveal{ opacity:1; transform:none; }
+}
