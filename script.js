@@ -48,7 +48,6 @@
     "ORG:LIP Industrie Précision",
     "TITLE:Mécanique de précision",
     "TEL;TYPE=WORK,VOICE:+33381535088",
-    "TEL;TYPE=WORK,FAX:+33381535376",
     "EMAIL;TYPE=WORK:contact@lip-industrie.com",
     "ADR;TYPE=WORK:;;2D chemin de l'Ermitage;Besançon;;25000;France",
     "URL:https://www.lip-industrie.com",

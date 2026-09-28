@@ -56,7 +56,7 @@ Des pièces critiques, dans des environnements qui n'autorisent aucune erreur.
 ## Nous contacter
 
 - 📍 2D chemin de l'Ermitage, 25000 Besançon — France
-- 📞 +33 (0)3 81 53 50 88 · 🖨️ Fax +33 (0)3 81 53 53 76
+- 📞 +33 (0)3 81 53 50 88
 - ✉️ contact@lip-industrie.com
 - 🌐 [www.lip-industrie.com](https://www.lip-industrie.com)
 
